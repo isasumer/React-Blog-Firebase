@@ -9,6 +9,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import center from "../assets/center.png"
+import {Link} from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     width:"98%"
   }
 }));
-
+const word = "<eden8/>"; 
 function Header() {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
@@ -41,8 +42,10 @@ function Header() {
     <div >
        <AppBar  position="static">
         <Toolbar className={classes.root}>
+          <Link to="/">
         <img src="https://eds-fireblog.herokuapp.com/static/media/cw.041cf5e8.jpeg" style={{width:"50px"}}/>
-        <img src={center} />
+        </Link>
+        <p style={{fontSize:"30px"}}>{word} Blog</p>
           
           {auth && (
             <div>

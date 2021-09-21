@@ -1,16 +1,20 @@
 import "./App.css";
 import Header from "./components/Header";
-import Main from "./components/Main";
 import { AuthContextProvider } from "./context/AuthContext";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Details from "./pages/Details";
 
 function App() {
   return (
-    <AuthContextProvider>
-      <div className="App">
-        <Header />
-        <Main />
-      </div>
-    </AuthContextProvider>
+    <Router>
+      <AuthContextProvider>
+          <Header />
+         <Route exact path="/" component= {Home}/>
+         <Route exact path="/details" component= {Details}/>
+        
+      </AuthContextProvider>
+    </Router>
   );
 }
 

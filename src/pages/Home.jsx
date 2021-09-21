@@ -1,19 +1,16 @@
 import React from "react";
-// import CardItem from "./CardItem";
+import CardItem from "../components/CardItem";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import Details from "./Details";
-
-function Main() {
+function Home() {
   const { authInfo } = useContext(AuthContext);
   return (
     <div>
       <h1>Dashboard </h1>
       {authInfo}
-      {/* <CardItem /> */}
-      <Details />
+      <CardItem />
     </div>
   );
 }
 
-export default Main;
+export default Home;
