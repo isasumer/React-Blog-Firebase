@@ -16,7 +16,6 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Link } from "react-router-dom"
-
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -39,18 +38,15 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: red[500],
   },
 }));
-
 export default function CardItem() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
   return (
     <Card className={classes.root}>
-      <Link to="details">
+      <Link to="register">
       <CardMedia
         className={classes.media}
         image="https://www.hyundai.com/content/hyundai/ww/data/news/data/2021/0000016609/image/newsroom-0112-photo-1-2021elantranline-1120x745.jpg"

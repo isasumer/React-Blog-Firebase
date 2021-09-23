@@ -1,18 +1,33 @@
-import React, { useState, createContext } from 'react';
+import { createContext, useContext, useState, useEffect } from "react";
+import { auth } from "../helpers/Firebase";
+const AuthContext = createContext();
 
-// Our Header Context
-export const AuthContext = createContext();
+export const useAuth = () => {
+  return useContext(AuthContext);
+};
 
-export const AuthContextProvider = (props) => {
-  const [authInfo, setAuthInfo] = useState("first context")
-
+export const AuthProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState();
+  const [loading, setLoading] = useState(true);
   
-  return (
-    <AuthContext.Provider value={{
-      authInfo:authInfo,
-      setAuthInfo: setAuthInfo
-    }}>
-      {props.children}
-    </AuthContext.Provider >
-  )
-}
+  const register = (email, password) => {
+    return auth.createUserWithEmailAndPassword(email, password);
+  };
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
+      setLoading(false);
+    });
+    return unsubscribe;
+  }, []);
+
+  const value = {
+    currentUser,
+    register,
+  };
+
+  return <AuthContext.Provider value={value}>
+    {!loading && children}
+    </AuthContext.Provider>;
+};
