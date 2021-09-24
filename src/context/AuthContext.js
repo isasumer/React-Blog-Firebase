@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { auth } from "../helpers/Firebase";
+
 const AuthContext = createContext();
 
 export const useAuth = () => {
@@ -13,7 +14,12 @@ export const AuthProvider = ({ children }) => {
   const register = (email, password) => {
     return auth.createUserWithEmailAndPassword(email, password);
   };
-
+  function login(email, password) {
+    return auth.signInWithEmailAndPassword(email, password)
+  }
+  function logout() {
+    return auth.signOut()
+  }
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
@@ -25,6 +31,9 @@ export const AuthProvider = ({ children }) => {
   const value = {
     currentUser,
     register,
+    login,
+    logout,
+    
   };
 
   return <AuthContext.Provider value={value}>
