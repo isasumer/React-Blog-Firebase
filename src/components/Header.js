@@ -32,7 +32,6 @@ function Header() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-<div></div>
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
   const history = useHistory();

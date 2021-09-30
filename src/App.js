@@ -1,14 +1,13 @@
 import Header from "./components/Header";
 import { AuthProvider } from "./context/AuthContext";
 import { BlogProvider } from "./context/BlogContext";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Details from "./pages/Details";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Profile from "./components/Profile";
 import New from "./components/New";
-import PrivateRoute from "./components/Routes/PrivateRoute";
 
 function App() {
   return (
